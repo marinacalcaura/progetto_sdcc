@@ -1,0 +1,111 @@
+version: '2.21'
+services:
+  s_registry:
+    build:
+      context: ./
+      dockerfile: ./s_registry/Dockerfile
+    ports:
+      - "8000:8000"
+    networks:
+      - chord-network
+  nodo8001:
+    build:
+      context: ./
+      dockerfile: ./node/Dockerfile
+    depends_on:
+      - s_registry
+    environment:
+      - NODE_PORT=8001
+      - NODE_HOST=node1-container
+      - BIT=5
+    ports:
+      - "8001:8001"
+    networks:
+      - chord-network
+  nodo8002:
+    build:
+      context: ./
+      dockerfile: ./node/Dockerfile
+    depends_on:
+      - s_registry
+    environment:
+      - NODE_PORT=8002
+      - NODE_HOST=node2-container
+      - BIT=5
+    ports:
+      - "8002:8002"
+    networks:
+      - chord-network
+  nodo8003:
+    build:
+      context: ./
+      dockerfile: ./node/Dockerfile
+    depends_on:
+      - s_registry
+    environment:
+      - NODE_PORT=8003
+      - NODE_HOST=node3-container
+      - BIT=5
+    ports:
+      - "8003:8003"
+    networks:
+      - chord-network
+  nodo8004:
+    build:
+      context: ./
+      dockerfile: ./node/Dockerfile
+    depends_on:
+      - s_registry
+    environment:
+      - NODE_PORT=8004
+      - NODE_HOST=node4-container
+      - BIT=5
+    ports:
+      - "8004:8004"
+    networks:
+      - chord-network
+  nodo8005:
+    build:
+      context: ./
+      dockerfile: ./node/Dockerfile
+    depends_on:
+      - s_registry
+    environment:
+      - NODE_PORT=8005
+      - NODE_HOST=node5-container
+      - BIT=5
+    ports:
+      - "8005:8005"
+    networks:
+      - chord-network
+  nodo8006:
+    build:
+      context: ./
+      dockerfile: ./node/Dockerfile
+    depends_on:
+      - s_registry
+    environment:
+      - NODE_PORT=8006
+      - NODE_HOST=node6-container
+      - BIT=5
+    ports:
+      - "8006:8006"
+    networks:
+      - chord-network
+  nodo8007:
+    build:
+      context: ./
+      dockerfile: ./node/Dockerfile
+    depends_on:
+      - s_registry
+    environment:
+      - NODE_PORT=8007
+      - NODE_HOST=node7-container
+      - BIT=5
+    ports:
+      - "8007:8007"
+    networks:
+      - chord-network
+networks:
+  chord-network:
+    driver: bridge
